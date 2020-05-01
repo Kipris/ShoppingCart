@@ -1,9 +1,14 @@
 @import '../../assets/styles/grid.module';
 
 .cart__wrap {
+    display: flex;
+    justify-content: space-between;
     margin-top: 45px;
-    height: 100px;
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 2px 18px rgba(0, 0, 0, .3);
+}
+
+.info {
+    padding: 20px 40px 44px 40px;
 }

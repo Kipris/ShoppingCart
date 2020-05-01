@@ -6,6 +6,9 @@
 
 body {
   margin: 0;
+  padding-bottom: 76px;
+  min-width: 800px;
+  overflow-x: auto;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,4 +18,22 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: 26px;
+  line-height: 31px;
+  
+}
+
+h2 {
+  margin: 12px 0;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+h1, h2 {
+  font-weight: 300;
+  color: #5A1094;
 }

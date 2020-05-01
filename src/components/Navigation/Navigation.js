@@ -9,7 +9,7 @@ const navigation = (props) => {
             <div className={classes.container}>
                 <div className={classes.navigation__wrap}>
                     <div className={classes.banner}>
-                        Test task
+                        Some Ecommerce webpage
                     </div>
                     <div className={classes.cart}>
                         <Icon iconName='cart' />
