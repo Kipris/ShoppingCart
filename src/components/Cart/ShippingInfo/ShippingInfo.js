@@ -19,9 +19,9 @@ class ShippingInfo extends Component {
                     </div>
                     <div className={classes.form__group}>
                         <div className={classes.form__grouptitle}>Address</div>
+                        <input placeholder='Location' />
                         <input placeholder='Street Address' />
                         <input placeholder='Apt, Suite, Bldg, Gate Code. (optional)' />
-                        <input placeholder='Location' />
                         <input placeholder='ZIP' />
                     </div>
                     <button>Continue</button>

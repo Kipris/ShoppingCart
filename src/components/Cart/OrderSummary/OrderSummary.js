@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import OrderList from './OrderList/OrderList';
 import classes from './OrderSummary.module.scss';
 
 class OrderSummary extends Component {
@@ -7,7 +8,7 @@ class OrderSummary extends Component {
         order: [
             {
                 id: 'jfdhfjdhf', 
-                imageUrl: require('../../../assets/img/boots.jpg'), 
+                imageUrl: 'https://res.cloudinary.com/everlane/image/upload/c_scale/c_fill,dpr_2.0,f_auto,q_auto,w_auto:100:1200/v1/i/13301929_0368.jpg', 
                 name: 'The Chelsea Boot', 
                 color: 'Black', 
                 quantity: '1',
@@ -15,7 +16,7 @@ class OrderSummary extends Component {
             },
             {
                 id: 'oeioreirenren', 
-                imageUrl: require('../../../assets/img/backpack.jpg'), 
+                imageUrl: 'https://res.cloudinary.com/everlane/image/upload/c_fill,dpr_1.0,f_jpg,h_1200,q_85,w_1200/v1/i/18d59f68_9d41.jpg', 
                 name: 'The Twill Snap Backpack', 
                 color: 'Reverse Denim + Brown Leather', 
                 quantity: '1',
@@ -23,7 +24,7 @@ class OrderSummary extends Component {
             },
             {
                 id: 'sndmsnjdshwg', 
-                imageUrl: require('../../../assets/img/bag.jpg'), 
+                imageUrl: 'https://i.pinimg.com/474x/c9/98/b4/c998b444c27076dcd436648319f14a21.jpg', 
                 name: 'The Twill Zip Tote', 
                 color: 'Reverse Denim + Black Leather', 
                 quantity: '1',
@@ -45,57 +46,10 @@ class OrderSummary extends Component {
                     <h2>Order Summary</h2>
                     <div className={classes.edit}>edit order</div>
                 </div>
-                <ul className={classes.order}>
-                    <li>
-                        <span className={classes.order__image}>
-                            <img src={this.state.order[0].imageUrl} />
-                        </span>
-                        <span className={classes.order__item}>
-                            <span className={classes.order__itemname}>{this.state.order[0].name}</span>
-                            <span className={classes.order__itemcolor}>{this.state.order[0].color}</span>
-                            <span className={classes.order__itemquantity}>Quantity: {this.state.order[0].quantity}</span>
-                        </span>
-                        <span className={classes.order__itemqprice}>${this.state.order[0].price}</span>
-                    </li>
-                    <li>
-                        <span className={classes.order__image}>
-                            <img src={require("../../../assets/img/backpack.jpg")} />
-                        </span>
-                        <span className={classes.order__item}>
-                            <span className={classes.order__itemname}>The Twill Snap Backpack</span>
-                            <span className={classes.order__itemcolor}>Reverse Denim + Brown Leather</span>
-                            <span className={classes.order__itemquantity}>Quantity: 1</span>
-                        </span>
-                        <span className={classes.order__itemqprice}>$65</span>
-                    </li>
-                    <li>
-                        <span className={classes.order__image}>
-                            <img src={require("../../../assets/img/bag.jpg")} />
-                        </span>
-                        <span className={classes.order__item}>
-                            <span className={classes.order__itemname}>The Twill Zip Tote</span>
-                            <span className={classes.order__itemcolor}>Reverse Denim + Black Leather</span>
-                            <span className={classes.order__itemquantity}>Quantity: 1</span>
-                        </span>
-                        <span className={classes.order__itemqprice}>$48</span>
-                    </li>
-                    <li className={classes.order__calc}>
-                        <span>
-                            <span>Subtotal</span>
-                            <span>Shipping</span>
-                            <span>Taxes</span>
-                        </span>
-                        <span>
-                            <span>${subtotal.toFixed(0)}</span>
-                            <span>Free</span>
-                            <span>${taxes.toFixed(2)}</span>
-                        </span>
-                    </li>
-                    <li className={classes.order__total}>
-                        <span>Total</span>
-                        <span>${(subtotal + taxes).toFixed(2)}</span>
-                    </li>
-                </ul>
+                <OrderList 
+                    subtotal={subtotal}
+                    taxes={taxes}
+                    orderInfo={this.state.order} />
                 <span className={classes.terms}>
                     All purchases are subject to our <a>Terms and Conditions</a>
                 </span>
