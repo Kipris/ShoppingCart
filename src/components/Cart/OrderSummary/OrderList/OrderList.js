@@ -4,18 +4,18 @@ import OrderItem from './OrderItem/OrderItem';
 import classes from './OrderList.module.scss';
 
 const orderList = (props) => {
-    let orderItems = null;
-    if (props.orderInfo) {
-        orderItems = props.orderInfo.map(item => {
-            return <OrderItem 
+    let orderItems = props.orderInfo.map(item => {
+        return (
+            <OrderItem 
                 key={item.id}
                 imageUrl={item.imageUrl}
                 name={item.name}
                 color={item.color}
                 quantity={item.quantity}
                 price={item.price} />
-        })
-    }
+        );
+    });
+    
     return (
         <ul className={classes.order}>
             {orderItems}

@@ -1,43 +1,15 @@
-.shippinginfo__wrap {
-    width: 360px;
-}
-
 .form {
-    &__group {
-        margin-bottom: 20px;
-    }
-    &__grouptitle {
-        color: #5A1094;
-        font-size: 16px;
+    width: 320px;
+    margin-top: -10px;
+    &__error {
+        font-size: 14px;
         line-height: 16px;
-        font-weight: 300;
-        margin-bottom: 5px;
-    }
-    input {
-        &:last-child {
-            width: 180px;
-        }
-        &::placeholder {
-            color: #6B6B6B;
-        }
-    }
-    select {
-        margin-right: 20px;
-    }
-    input, select {
-        width: 100%;
-        font-size: 16px;
-        line-height: 16px;
-        font-weight: 300;
-        padding: 10px 15px;
-        border-radius: 4px;
-        border: 1px solid #DEDCDC;
-        height: 40px;
-        margin-bottom: 10px;
+        color: #FF1876;
     }
     button {
+        display: inline-block;
         min-width: 180px;
-        margin-top: -10px;
+        margin-top: 10px;
         padding: 12px 10px 13px;
         border-radius: 4px;
         color: #fff;
@@ -47,10 +19,16 @@
         line-height: 19px;
         font-weight: 400;
         transition: .2s ease-in;
-        &:hover {
+        text-decoration: none;
+        text-align: center;
+        &:not([disabled]):hover {
             cursor: pointer;
             background-color:#5A1094;
             border: 1px solid#431C5D;
+        }
+        &[disabled] {
+            cursor: not-allowed;
+            opacity: .5;
         }
     }
 }

@@ -1,0 +1,1 @@
+export { addShippingInfo } from './orderInfo';

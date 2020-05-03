@@ -3,7 +3,8 @@
 .cart__wrap {
     display: flex;
     justify-content: space-between;
-    margin-top: 45px;
+    min-height: 550px;
+    margin: 45px auto 0;
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 2px 18px rgba(0, 0, 0, .3);
