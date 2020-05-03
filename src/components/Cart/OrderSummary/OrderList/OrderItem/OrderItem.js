@@ -6,7 +6,7 @@ const orderItem = (props) => {
     return (
         <li className={classes.item}>
             <span className={classes.item__image}>
-                <img src={props.imageUrl} />
+                <img src={props.imageUrl} alt={props.name} />
             </span>
             <span className={classes.item__info}>
                 <span className={classes.item__name}>{props.name}</span>

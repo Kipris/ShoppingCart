@@ -1,0 +1,4 @@
+export const FETCH_ORDER = 'FETCH_ORDER'; //for saga
+export const FETCH_ORDER_START = 'FETCH_ORDER_START';
+export const FETCH_ORDER_SUCCESS = 'FETCH_ORDER_SUCCESS';
+export const FETCH_ORDER_FAIL = 'FETCH_ORDER_FAIL';
