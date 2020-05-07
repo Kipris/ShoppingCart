@@ -1,3 +1,13 @@
+.title__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    span {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
 .form {
     &__group {
         margin-bottom: 20px;

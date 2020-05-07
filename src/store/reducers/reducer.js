@@ -34,24 +34,42 @@ const initialState = {
 }
 
 const addShippingInfo = (state, action) => {
-    let updatedShippingInfo = updateObject(state.shippingInfo, {
-        shippingInfo: action.shippingInfo
-    });
-    return updateObject(state, updatedShippingInfo);
+    return {
+        ...state,
+        order: {
+            ...state.order,
+            shippingInfo: {
+                ...state.order.shippingInfo,
+                ...action.shippingInfo
+            }
+        }
+    }
 }
 
 const addBillingInfo = (state, action) => {
-    let updatedBillingInfo = updateObject(state.billingInfo, {
-        billingInfo: action.billingInfo
-    });
-    return updateObject(state, updatedBillingInfo);
+    return {
+        ...state,
+        order: {
+            ...state.order,
+            billingInfo: {
+                ...state.order.billingInfo,
+                ...action.billingInfo
+            }
+        }
+    }
 }
 
 const addPaymentInfo = (state, action) => {
-    let updatedPaymentInfo = updateObject(state.paymentInfo, {
-        paymentInfo: action.paymentInfo
-    });
-    return updateObject(state, updatedPaymentInfo);
+    return {
+        ...state,
+        order: {
+            ...state.order,
+            paymentInfo: {
+                ...state.order.paymentInfo,
+                ...action.paymentInfo
+            }
+        }
+    }
 }
 
 const reducer = (state = initialState, action) => {

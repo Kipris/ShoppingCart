@@ -1,1 +1,1 @@
-export { addShippingInfo } from './orderInfo';
+export { addShippingInfo, addBillingInfo } from './orderInfo';

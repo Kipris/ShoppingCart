@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import orderInfoReducer from './store/reducers/reducer';
 
 const rootReducer = combineReducers({
-  ord: orderInfoReducer
+  orderInfo: orderInfoReducer
 });
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;

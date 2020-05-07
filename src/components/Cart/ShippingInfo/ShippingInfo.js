@@ -17,7 +17,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Full Name'
                 },
                 label: 'Recipient',
-                value: '',
+                value: 'd',
                 validation: {
                     required: true
                 },
@@ -32,7 +32,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Daytime Phone'
                 },
                 label: '',
-                value: '',
+                value: 'd',
                 validation: {
                     required: true
                 },
@@ -47,7 +47,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Country'
                 },
                 label: 'Address',
-                value: '',
+                value: 'd',
                 validation: {
                     required: true
                 },
@@ -62,7 +62,7 @@ class ShippingInfo extends Component {
                     placeholder: 'City'
                 },
                 label: '',
-                value: '',
+                value: 'd',
                 validation: {
                     required: true
                 },
@@ -77,7 +77,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Street Address'
                 },
                 label: '',
-                value: '',
+                value: 'd',
                 validation: {
                     required: true
                 },
@@ -92,7 +92,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Apt, Suite, Bldg, Gate Code. (optional)'
                 },
                 label: '',
-                value: '',
+                value: 'd',
                 validation: {
                     required: false
                 },
@@ -107,7 +107,7 @@ class ShippingInfo extends Component {
                     placeholder: 'ZIP'
                 },
                 label: '',
-                value: '',
+                value: '55555',
                 validation: {
                     required: true,
                     minLength: 5,
