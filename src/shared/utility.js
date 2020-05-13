@@ -35,3 +35,13 @@ export const checkErrors = (value, rules) => {
     }
     return errorText;
 }
+
+export const insertCardTypeImg = (cardType) => {
+    const visaImgUrl = 'https://lavca.org/wp-content/uploads/2019/07/VISA-logo-square.png';
+    const masterCardImgUrl = 'https://i.dlpng.com/static/png/6794578_preview.png';
+    switch (cardType) {
+        case 'Visa': return visaImgUrl;
+        case 'MasterCard': return masterCardImgUrl;
+        default: return;
+    }
+}

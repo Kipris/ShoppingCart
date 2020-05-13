@@ -1,5 +1,13 @@
 .group {
+    position: relative;
     margin-bottom: 10px;
+    img {
+        position: absolute;
+        height: auto;
+        right: 5px;
+        width: 46px;
+        top: 30px;
+    }
 }
 
 label {

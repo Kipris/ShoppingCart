@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://react-ecommerce-6f0e7.firebaseio.com/orders'
+    baseURL: 'https://react-ecommerce-6f0e7.firebaseio.com'
 });
 
 export default instance;

@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { insertCardTypeImg } from '../../../shared/utility';
 import classes from './Input.module.scss';
 
 const input = (props) => {
@@ -15,7 +17,6 @@ const input = (props) => {
         value={props.value}
         placeholder={props.elementConfig.placeholder}
         onChange={props.changed} />;
-
     return (
         <div className={classes.group}> 
             {props.label 
@@ -25,6 +26,9 @@ const input = (props) => {
             {props.invalid && props.errorText
                 ? <label className={classes.error}>{props.errorText}</label>
                 : null}
+            {props.cardType 
+                ? <img src={insertCardTypeImg(props.cardType)} alt={props.cardType} />
+                : null }
         </div>
     );
 }

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import Input from '../../UI/Input/Input';
 import { updateObject, checkErrors } from '../../../shared/utility';
-import * as actions from '../../../store/actions/index';
 import classes from './BillingInfo.module.scss';
 
 class BillingInfo extends Component {
@@ -34,7 +32,7 @@ class BillingInfo extends Component {
                 label: '',
                 value: '',
                 validation: {
-                    required: true
+                    required: false
                 },
                 valid: false,
                 touched: false,
@@ -136,18 +134,21 @@ class BillingInfo extends Component {
         for (let inputIdentifier in updatedBillingForm) {
             formIsValid = updatedBillingForm[inputIdentifier].valid && formIsValid;
         }
-
+        
         this.setState({billingForm: updatedBillingForm, formIsValid});
     }
 
     fillBillingFormHandler = () => {
         let newBillingInfo = {...this.state.billingForm};
+        let formIsValid = true;
         for (let prop in this.props.shippingInfo) {
             if (newBillingInfo[prop]) {
-                newBillingInfo[prop].value = this.props.shippingInfo[prop]
+                newBillingInfo[prop].value = this.props.shippingInfo[prop];
+                newBillingInfo[prop].valid = checkErrors(this.props.shippingInfo[prop], this.props.shippingInfo[prop].validation);
+                formIsValid = newBillingInfo[prop].valid && formIsValid;
             }
-        }
-        this.setState({billingForm: newBillingInfo})
+        }    
+        this.setState({billingForm: newBillingInfo, formIsValid})
     }
 
     submitHandler = (event) => {
@@ -180,7 +181,6 @@ class BillingInfo extends Component {
         }
 
         this.props.onAddBillingInfo(formData);
-        // TODO: move to actions
         this.props.history.push('/payment');
     }
 
@@ -224,17 +224,5 @@ class BillingInfo extends Component {
         );
     }
 }
-
-const mapStateToProps = state => {
-    return {
-        shippingInfo: state.orderInfo.order.shippingInfo
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddBillingInfo: (billingInfo) => dispatch(actions.addBillingInfo(billingInfo))
-    }
-}
  
-export default connect(mapStateToProps, mapDispatchToProps)(BillingInfo);
+export default withRouter(BillingInfo);

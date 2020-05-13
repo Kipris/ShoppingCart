@@ -47,11 +47,15 @@ class OrderSummary extends Component {
             return acc + (price * quantity);
         }, 0);
 
+        let summaryClasses = [classes.wrap];
+        if (this.props.isOrdered) {
+            summaryClasses.push(classes.disabled);
+        }
+
         return (
-            <div className={classes.wrap}>
+            <div className={summaryClasses.join(' ')}>
                 <div className={classes.title}>
                     <h2>Order Summary</h2>
-                    {/* <div className={classes.edit}>edit order</div> */}
                 </div>
                 <OrderList 
                     subtotal={subtotal}

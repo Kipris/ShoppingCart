@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import Input from '../../UI/Input/Input';
 import { updateObject, checkErrors } from '../../../shared/utility';
-import * as actions from '../../../store/actions/index';
 import classes from './ShippingInfo.module.scss';
 
 class ShippingInfo extends Component {
@@ -17,7 +15,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Full Name'
                 },
                 label: 'Recipient',
-                value: 'd',
+                value: '',
                 validation: {
                     required: true
                 },
@@ -32,7 +30,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Daytime Phone'
                 },
                 label: '',
-                value: 'd',
+                value: '',
                 validation: {
                     required: true
                 },
@@ -47,7 +45,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Country'
                 },
                 label: 'Address',
-                value: 'd',
+                value: '',
                 validation: {
                     required: true
                 },
@@ -62,7 +60,7 @@ class ShippingInfo extends Component {
                     placeholder: 'City'
                 },
                 label: '',
-                value: 'd',
+                value: '',
                 validation: {
                     required: true
                 },
@@ -77,7 +75,7 @@ class ShippingInfo extends Component {
                     placeholder: 'Street Address'
                 },
                 label: '',
-                value: 'd',
+                value: '',
                 validation: {
                     required: true
                 },
@@ -92,9 +90,9 @@ class ShippingInfo extends Component {
                     placeholder: 'Apt, Suite, Bldg, Gate Code. (optional)'
                 },
                 label: '',
-                value: 'd',
+                value: '',
                 validation: {
-                    required: false
+                    required: true
                 },
                 valid: false,
                 touched: false,
@@ -107,7 +105,7 @@ class ShippingInfo extends Component {
                     placeholder: 'ZIP'
                 },
                 label: '',
-                value: '55555',
+                value: '',
                 validation: {
                     required: true,
                     minLength: 5,
@@ -131,18 +129,17 @@ class ShippingInfo extends Component {
         const updatedShippingForm = updateObject(this.state.shippingForm, {
             [inputIdentifier]: updatedFormElement
         });
-
+        
         let formIsValid = true;
         for (let inputIdentifier in updatedShippingForm) {
             formIsValid = updatedShippingForm[inputIdentifier].valid && formIsValid;
         }
-
+        
         this.setState({shippingForm: updatedShippingForm, formIsValid});
     }
 
     submitHandler = (event) => {
         event.preventDefault();
-
         if (!this.state.formIsValid) {
             for (let inputIdentifier in this.state.shippingForm) {
                 this.setState(prevState => {
@@ -170,7 +167,6 @@ class ShippingInfo extends Component {
         }
 
         this.props.onAddShippingInfo(formData);
-        // TODO: move to actions
         this.props.history.push('/billing');
     }
 
@@ -212,10 +208,4 @@ class ShippingInfo extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddShippingInfo: (shippingInfo) => dispatch(actions.addShippingInfo(shippingInfo))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(withRouter(ShippingInfo));
+export default withRouter(ShippingInfo);

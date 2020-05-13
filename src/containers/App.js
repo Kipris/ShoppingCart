@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Navigation from '../components/Navigation/Navigation';
-import Cart from '../components/Cart/Cart';
+import Cart from './Cart/Cart';
 
 class App extends Component {
-  state = {
-    productsAmount: 3
-  }
-
   render() { 
+    let cartAmount = '';
+    if (this.props.orderSummary) {
+      cartAmount = Object.keys(this.props.orderSummary).length;
+    }
     return (
       <>
         <Navigation 
-          amount={this.state.productsAmount} />
+          amount={cartAmount} />
         <Cart />
       </>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    orderSummary: state.orderInfo.order.orderSummary
+  }
+}
  
-export default App;
+export default connect(mapStateToProps)(App);

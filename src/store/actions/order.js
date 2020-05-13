@@ -21,3 +21,28 @@ export const addPaymentInfo = (paymentInfo) => {
     }
 }
 
+export const makeOrder = (order) => {
+    return {
+        type: actionTypes.MAKE_ORDER,
+        order
+    }
+}
+
+export const makeOrderStart = () => {
+    return {
+        type: actionTypes.MAKE_ORDER_START
+    }
+}
+
+export const makeOrderSuccess = () => {
+    return {
+        type: actionTypes.MAKE_ORDER_SUCCESS
+    }
+}
+
+export const makeOrderFail = (error) => {
+    return {
+        type: actionTypes.MAKE_ORDER_FAIL,
+        error
+    }
+}

@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updateObject } from '../../shared/utility';
 
 const initialState = {
     order: {
@@ -28,9 +27,11 @@ const initialState = {
         },
         shippingInfo: null,
         billingInfo: null,
-        paymentInfo: null,
-        redirectPath: '/shipping'
-    }
+        paymentInfo: null
+    },
+    loading: false,
+    isOrdered: false,
+    error: false
 }
 
 const addShippingInfo = (state, action) => {
@@ -72,11 +73,37 @@ const addPaymentInfo = (state, action) => {
     }
 }
 
+const makeOrderStart = (state, action) => {
+    return {
+        ...state,
+        loading: true
+    }
+}
+
+const makeOrderSuccess = (state, action) => {
+    return {
+        ...state,
+        loading: false,
+        isOrdered: true
+    }
+}
+
+const makeOrderFail = (state, action) => {
+    return {
+        ...state,
+        loading: false,
+        error: action.error
+    }
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_SHIPPING_INFO: return addShippingInfo(state, action);
         case actionTypes.ADD_BILLING_INFO: return addBillingInfo(state, action);
         case actionTypes.ADD_PAYMENT_INFO: return addPaymentInfo(state, action);
+        case actionTypes.MAKE_ORDER_START: return makeOrderStart(state, action);
+        case actionTypes.MAKE_ORDER_SUCCESS: return makeOrderSuccess(state, action);
+        case actionTypes.MAKE_ORDER_FAIL: return makeOrderFail(state, action);
         default: return state;
     }
 }

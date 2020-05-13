@@ -4,10 +4,10 @@ import classes from './Icon.module.scss'
 
 const icon = (props) => {
     return (
-        <div className={classes.icon__wrap}>
+        <div className={classes.wrap}>
             <img 
                 src={require(`../../../assets/icons/${props.iconName}-icon.svg`)} 
-                alt={`${props.iconAlt} icon`} />
+                alt={`${props.iconName} icon`} />
         </div>
     );
 }
