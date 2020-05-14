@@ -25,6 +25,7 @@ const AsyncSuccessOrder = asyncComponent(() => {
 })
 
 class Cart extends Component {
+
     render() { 
         let routes = (
             <Switch>
@@ -54,7 +55,7 @@ class Cart extends Component {
                 ? <Route 
                     path="/success-order" 
                     component={() => <AsyncSuccessOrder 
-                                        customerEmail={this.props.orderInfo.order.billingInfo.email} />} />
+                                        customerEmail={this.props.orderInfo.order.shippingInfo.email} />} />
                 : null }    
                 
                 <Redirect to="/shipping" />

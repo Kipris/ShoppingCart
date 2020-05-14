@@ -144,7 +144,7 @@ class BillingInfo extends Component {
         for (let prop in this.props.shippingInfo) {
             if (newBillingInfo[prop]) {
                 newBillingInfo[prop].value = this.props.shippingInfo[prop];
-                newBillingInfo[prop].valid = checkErrors(this.props.shippingInfo[prop], this.props.shippingInfo[prop].validation);
+                newBillingInfo[prop].valid = true;
                 formIsValid = newBillingInfo[prop].valid && formIsValid;
             }
         }    
