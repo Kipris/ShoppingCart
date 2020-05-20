@@ -11,7 +11,7 @@ const breadcrumbs = (props) => {
     let breadcrumbs = null;
     if (!props.orderInfo.order.paymentInfo) {
         breadcrumbs = (
-            <ul className={classes.breadcrumbs__list}>
+            <ul className={classes.list}>
                 <li>
                     <NavLink to='/shipping' activeStyle={linkStyles}>Shipping</NavLink>
                 </li>

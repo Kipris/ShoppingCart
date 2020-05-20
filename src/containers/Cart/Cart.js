@@ -27,38 +27,36 @@ const AsyncSuccessOrder = asyncComponent(() => {
 class Cart extends Component {
 
     render() { 
+        let redirect = <Redirect to="/shipping" />;
         let routes = (
             <Switch>
-                <Route 
-                    path="/shipping" 
-                    component={() => <ShippingInfo 
-                                        onAddShippingInfo={this.props.onAddShippingInfo} />} />
+                <Route path="/shipping">
+                    <ShippingInfo onAddShippingInfo={this.props.onAddShippingInfo} />
+                </Route>
                 
-                { this.props.orderInfo.order.shippingInfo
-                ? <Route 
-                    path="/billing" 
-                    component={() => <AsyncBillingInfo 
-                                        shippingInfo={this.props.orderInfo.order.shippingInfo} 
-                                        onAddBillingInfo={this.props.onAddBillingInfo} />} /> 
-                : null }
+                <Route path="/billing">
+                    { this.props.orderInfo.order.shippingInfo
+                    ? <AsyncBillingInfo 
+                        shippingInfo={this.props.orderInfo.order.shippingInfo} 
+                        onAddBillingInfo={this.props.onAddBillingInfo} />
+                    : redirect }
+                </Route> 
+                
+                <Route path="/payment">
+                    { this.props.orderInfo.order.billingInfo
+                    ? <AsyncPaymentInfo 
+                        onAddPaymentInfo={this.props.onAddPaymentInfo} 
+                        onMakeOrder={this.props.onMakeOrder}
+                        orderData={this.props.orderInfo.order} />
+                    : redirect }
+                </Route>
 
-                { this.props.orderInfo.order.billingInfo
-                ? <Route 
-                    path="/payment" 
-                    component={() => <AsyncPaymentInfo 
-                                        onAddPaymentInfo={this.props.onAddPaymentInfo} 
-                                        onMakeOrder={this.props.onMakeOrder}
-                                        orderData={this.props.orderInfo.order} />} />
-                : null }
-                
-                { this.props.orderInfo.order.paymentInfo
-                ? <Route 
-                    path="/success-order" 
-                    component={() => <AsyncSuccessOrder 
-                                        customerEmail={this.props.orderInfo.order.shippingInfo.email} />} />
-                : null }    
-                
-                <Redirect to="/shipping" />
+                <Route path="/success-order">
+                    { this.props.orderInfo.order.paymentInfo
+                    ? <AsyncSuccessOrder 
+                        customerEmail={this.props.orderInfo.order.shippingInfo.email} />
+                    : redirect } 
+                </Route>
             </Switch>
         );
         return (
